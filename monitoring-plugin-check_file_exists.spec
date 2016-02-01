@@ -5,8 +5,7 @@ Version:	1.0
 Release:	1
 License:	GPL
 Group:		Networking
-Source0:	https://exchange.nagios.org/components/com_mtree/attachment.php?link_id=2330&cf_id=24&/%{plugin}.sh
-# Source0-md5:	388097c05f6e58f4eeaca2cdf132331e
+Source0:	%{plugin}.sh
 Source1:	%{plugin}.cfg
 URL:		https://exchange.nagios.org/directory/Plugins/System-Metrics/File-System/check_file_exists/details
 BuildRequires:	rpmbuild(macros) >= 1.654
