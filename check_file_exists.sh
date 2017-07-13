@@ -35,6 +35,11 @@ exists() {
 	echo "$(state_name): $1 EXISTS :: `head -3 $1`" # shows the first three lines of the file
 }
 
+exists_dir() {
+    $negate && STATE=$STATE_CRITICAL || STATE=$STATE_OK
+    echo "$(state_name): $1 EXISTS :: Directory" # don't show the first three lines of the file
+}
+
 not_exists() {
 	$negate && STATE=$STATE_OK || STATE=$STATE_CRITICAL
 	echo "$(state_name): $1 Does NOT exist"
@@ -71,6 +76,8 @@ fi
 
 if [ -f "$1" ]; then
 	exists "$1"
+elif [ -d "$1" ]; then
+    exists_dir "$1"
 else
 	not_exists "$1"
 fi
