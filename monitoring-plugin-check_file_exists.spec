@@ -1,7 +1,7 @@
 %define		plugin	check_file_exists
 Summary:	Monitoring plugin to check if a file exists or not
 Name:		monitoring-plugin-%{plugin}
-Version:	1.1
+Version:	1.2
 Release:	1
 License:	GPL
 Group:		Networking

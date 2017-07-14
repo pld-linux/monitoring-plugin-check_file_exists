@@ -3,8 +3,9 @@
 # Author : Diego Martin Gardella [dgardella@gmail.com]
 # Desc : Plugin to verify if a file exists
 #
-# v1.0: Initial version by Diego Martin Gardella [dgardella@gmail.com]
-# v1.1: Add negate support, by Elan Ruusamäe <glen@pld-linux.org>
+# v1.0: Initial version by (Diego Martin Gardella [dgardella@gmail.com])
+# v1.1: Add negate support (Elan Ruusamäe <glen@pld-linux.org>)
+# v1.2: Also check if file is folder (Simon Smit)
 
 PROGNAME=`basename $0`
 PROGPATH=`echo $0 | sed -e 's,[\\/][^\\/][^\\/]*$,,'`
@@ -32,12 +33,13 @@ state_name() {
 
 exists() {
 	$negate && STATE=$STATE_CRITICAL || STATE=$STATE_OK
-	echo "$(state_name): $1 EXISTS :: `head -3 $1`" # shows the first three lines of the file
+   	# shows the first three lines of the file
+	echo "$(state_name): $1 EXISTS :: `head -3 $1`"
 }
 
 exists_dir() {
-    $negate && STATE=$STATE_CRITICAL || STATE=$STATE_OK
-    echo "$(state_name): $1 EXISTS :: Directory" # don't show the first three lines of the file
+	$negate && STATE=$STATE_CRITICAL || STATE=$STATE_OK
+	echo "$(state_name): $1 EXISTS :: Directory"
 }
 
 not_exists() {
@@ -77,7 +79,7 @@ fi
 if [ -f "$1" ]; then
 	exists "$1"
 elif [ -d "$1" ]; then
-    exists_dir "$1"
+	exists_dir "$1"
 else
 	not_exists "$1"
 fi
