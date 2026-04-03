@@ -2,7 +2,7 @@
 Summary:	Monitoring plugin to check if a file exists or not
 Name:		monitoring-plugin-%{plugin}
 Version:	1.2
-Release:	1
+Release:	2
 License:	GPL
 Group:		Networking
 Source0:	%{plugin}.sh
